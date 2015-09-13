@@ -15,6 +15,11 @@ power[, "finalDate"] <- as.POSIXct(power[, "NDateTime"], format = "%d/%m/%Y %H:%
 # filter dates
 powerfiltered <- power[power$finalDate >= as.POSIXct("1/2/2007 00:00:00", format = "%d/%m/%Y %H:%M:%S") 
                        & power$finalDate < as.POSIXct("3/2/2007 00:00:00", format = "%d/%m/%Y %H:%M:%S"),]
+
+# Save PNG file
+> png("plot4.png", width = 480, height = 480 )  
+
+
 # plot 
 par(mfrow = c(2, 2), mar = c(4,4,3,2))
 with (powerfiltered, {
@@ -49,3 +54,4 @@ with (powerfiltered, {
 
 
 })
+dev.off()

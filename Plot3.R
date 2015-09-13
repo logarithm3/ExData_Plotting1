@@ -12,19 +12,25 @@ power[, "finalDate"] <- as.POSIXct(power[, "NDateTime"], format = "%d/%m/%Y %H:%
 # filter dates
 powerfiltered <- power[power$finalDate >= as.POSIXct("1/2/2007 00:00:00", format = "%d/%m/%Y %H:%M:%S") 
                        & power$finalDate < as.POSIXct("3/2/2007 00:00:00", format = "%d/%m/%Y %H:%M:%S"),]
-# plot 1st
+       
+# Save PNG file
+
+png("plot3.png", width = 480, height = 480 )                
+                       
+# plot 1st line
 plot(powerfiltered$finalDate,powerfiltered$Sub_metering_1, col = "white", xlab = "",
       ylab = "Energy sub metering", ylim=c(0,40))
 
 lines(powerfiltered$finalDate, powerfiltered$Sub_metering_1,  col='black', type='l',lwd=1)
 
-# plot 2nd
+# plot 2nd line
 
 lines(powerfiltered$finalDate, powerfiltered$Sub_metering_2,  col='red', type='l',lwd=1)
 
-# plot 3rd
+# plot 3rd line
 
 lines(powerfiltered$finalDate, powerfiltered$Sub_metering_3,  col='blue', type='l',lwd=1)
 
-legend("topright",pch=1, col= c("black", "red", "blue"),
-       legend= c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+legend("topright",pch=25, col= c("black", "red", "blue"),legend= c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+       
+dev.off()

@@ -10,6 +10,16 @@ power[, "finalDate"] <- as.Date(power[, "NDateTime"], format = "%d/%m/%Y %H:%M:%
 # filter dates
 powerfiltered <- power[power$finalDate >= as.Date("1/2/2007 00:00:00", format = "%d/%m/%Y %H:%M:%S") 
                        & power$finalDate < as.Date("3/2/2007 00:00:00", format = "%d/%m/%Y %H:%M:%S"),]
+
+
+  
+  # Save PNG file
+
+png("plot1.png", width = 480, height = 480 )
+   
 # plot
+par(mar = c(4,4,2,1))
 hist(powerfiltered[,"Global_active_power"],  col ="red", 
      xlab = "Global Active Power (kilowatts)", ylab = "Frequency", main = "Global Active Power")
+
+dev.off()
